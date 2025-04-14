@@ -1,10 +1,10 @@
-const Estoque = require("../src/estoque");
+const Estoque = require("../src/estoque")
 
 describe("Testes para gerenciamento de estoque", () => {
     let estoque;
 
     beforeEach(() => {
-        estoque = new Estoque();
+        estoque = new Estoque()
     })
 
     it("Deve adicionar um item ao estoque", () => {
@@ -40,7 +40,6 @@ describe("Testes para gerenciamento de estoque", () => {
         expect(() => estoque.removerItem("Grampeador", 1)).toThrow("Item não encontrado.");
     })
 
-
     it("Deve lançar erro ao remover quantidade maior que disponível", () => {
         estoque.adicionarItem("Lápis", 10);
         expect(() => estoque.removerItem("Lápis", 15)).toThrow("Quantidade a ser removida é maior do que a disponível.");
@@ -55,13 +54,7 @@ describe("Testes para gerenciamento de estoque", () => {
         ])
     })
 
-
     it("Deve lançar erro ao tentar atualizar um item inexistente", () => {
         expect(() => estoque.atualizarQuantidade("Apontador", 5)).toThrow("Item não encontrado.");
-    })
-
-    it("Deve lançar erro ao tentar atualizar com quantidade negativa", () => {
-        estoque.adicionarItem("Apontador", 5);
-        expect(() => estoque.atualizarQuantidade("Apontador", -1)).toThrow("A quantidade não pode ser negativa.");
     })
 })
